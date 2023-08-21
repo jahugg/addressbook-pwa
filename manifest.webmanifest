@@ -1,0 +1,12 @@
+{
+  "name": "Addressbook",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icons/icon.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ],
+  "display": "standalone"
+}

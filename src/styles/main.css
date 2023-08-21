@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+*,
+*:afer,
+*:before {
+  box-sizing: inherit;
+}
+
+#app {
+  background: darkgrey;
+}
