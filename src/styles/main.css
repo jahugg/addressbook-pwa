@@ -6,6 +6,16 @@ body {
   margin: 0;
 }
 
+:root {
+  --color-background: hsl(60 7% 6%);
+  --color-foreground: hsl(60 100% 95%);
+
+  --spacing-md: 12px;
+  --spacing-l: 16px;
+
+  --border-radius-md: 3px;
+}
+
 *,
 *:afer,
 *:before {
@@ -13,9 +23,51 @@ body {
 }
 
 #app {
-  background: darkgrey;
+  min-height: 100svh;
+  background: hsl(60 7% 6%);
+  color: hsl(60 100% 95%);
+  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri,
+    source-sans-pro, sans-serif;
 }
 
-#install-dialog::backdrop {
-  border: solid 1px red;
+#install-dialog {
+  border: solid 1px var(--color-foreground);
+  border-bottom: none;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  border-radius: 5px 5px 0 0;
+  position: absolute;
+  bottom: 0;
+  transition: translate 0.2s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-l);
+
+  & div {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+
+    & img {
+      --size: 50px;
+      width: var(--size);
+      height: var(--size);
+      border-radius: var(--size);
+    }
+  }
+
+  & button {
+    border: none;
+    padding: 1em 1.5em;
+    background: var(--color-foreground);
+    color: var(--color-background);
+    border-radius: var(--border-radius-md);
+  }
+
+  & form {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
 }

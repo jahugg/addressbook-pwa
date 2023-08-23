@@ -7,27 +7,29 @@ if ('serviceWorker' in navigator)
 else console.error('Service workers are not supported.');
 
 // Code to handle install prompt on desktop
-let deferredPrompt;
+let deferredInstallPrompt;
 
 // fires when website is installable
 window.addEventListener('beforeinstallprompt', (event) => {
-
   // Stash the event so it can be triggered later.
-  deferredPrompt = event;
+  deferredInstallPrompt = event;
 
   // create dialog element
-  const appEl = document.getElementById("app");
-  const installDialogEl = document.createElement("dialog");
-  installDialogEl.id = "install-dialog";
-  installDialogEl.innerHTML = `<p>Make Addressbook available offline!</p>
+  const appEl = document.getElementById('app');
+  const installDialogEl = document.createElement('dialog');
+  installDialogEl.id = 'install-dialog';
+  installDialogEl.innerHTML = `<div>
+      <img src="icons/icon.webp" alt="" />
+      <p>Make available offline.</p>
+    </div>
     <form>
-      <button value="install">Install</button>
       <button value="dismiss" formmethod="dialog">Dismiss</button>
+      <button value="install">Install</button>
     </form>`;
   appEl.appendChild(installDialogEl);
 
   // open the install dialog
-  installDialogEl.showModal();
+  installDialogEl.show();
 
   // handle tigger install event
   const installButtonEl = installDialogEl.querySelector('button[value="install"]');
@@ -36,13 +38,13 @@ window.addEventListener('beforeinstallprompt', (event) => {
     installDialogEl.close();
 
     // Show the prompt
-    deferredPrompt.prompt();
+    deferredInstallPrompt.prompt();
 
     // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
+    deferredInstallPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === 'accepted') console.log('User accepted the A2HS prompt');
       else console.log('User dismissed the A2HS prompt');
-      deferredPrompt = null;
+      deferredInstallPrompt = null;
     });
   });
 });
