@@ -15,3 +15,7 @@ body {
 #app {
   background: darkgrey;
 }
+
+#install-dialog::backdrop {
+  border: solid 1px red;
+}
