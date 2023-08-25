@@ -1,6 +1,6 @@
 // Register service worker to control making site work offline
 if ('serviceWorker' in navigator)
-  navigator.serviceWorker.register('/src/sw.js').then(
+  navigator.serviceWorker.register('/serviceworker.js').then(
     (registration) => console.log('Service worker registration succeeded:', registration),
     (error) => console.error(`Service worker registration failed: ${error}`)
   );
@@ -19,12 +19,12 @@ window.addEventListener('beforeinstallprompt', (event) => {
   const installDialogEl = document.createElement('dialog');
   installDialogEl.id = 'install-dialog';
   installDialogEl.innerHTML = `<div>
-      <img src="icons/icon.webp" alt="" />
+      <img src="icons/icon.webp" alt="app icon" />
       <p>Make available offline.</p>
     </div>
     <form>
       <button value="dismiss" formmethod="dialog">Dismiss</button>
-      <button value="install">Install</button>
+      <button value="install" type="button">Install</button>
     </form>`;
   appEl.appendChild(installDialogEl);
 

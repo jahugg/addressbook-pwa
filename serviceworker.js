@@ -62,7 +62,7 @@ const APP_STATIC_RESOURCES = ['/', '/index.html', '/src/app.js', '/src/styles/ma
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches
-      .open('fox-store')
+      .open(CACHE_NAME)
       .then((cache) =>
         cache.addAll(APP_STATIC_RESOURCES)
       )
